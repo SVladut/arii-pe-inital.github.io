@@ -1,0 +1,335 @@
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #eceff1;
+  color: #222;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.container {
+  padding: 30px 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 30px;
+  font-weight: 700;
+  font-size: 2rem;
+}
+
+.toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.button,
+.upload-button {
+  background-color: #00796B;
+  color: #fff;
+  border: none;
+  padding: 14px 24px;
+  font-size: 16px;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: background-color 0.25s ease;
+  position: relative;
+  font-weight: 600;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.12);
+  user-select: none;
+}
+
+.button:hover,
+.upload-button:hover {
+  background-color: #004D40;
+}
+
+.upload-button input[type="file"] {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+  cursor: pointer;
+}
+
+#canvas {
+  width: 800px;
+  height: 600px;
+  background-color: #fafafa;
+  border: 3px dashed #90a4ae;
+  border-radius: 12px;
+  position: relative;
+  margin: 0 auto;
+  box-shadow: 0 0 14px rgba(0, 0, 0, 0.08);
+  user-select: none;
+}
+
+.rect {
+  position: absolute;
+  border: 1.5px solid #444;
+  color: #222;
+  font-size: 12px;
+  padding: 3px 6px;
+  overflow: hidden;
+  text-align: center;
+  font-weight: 600;
+  background-color: #a5d6a7; 
+  box-shadow: inset 0 1px 3px rgba(255,255,255,0.6);
+  border-radius: 6px;
+  user-select: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(4px);
+}
+
+.modal-content {
+  background: #fff;
+  padding: 28px 32px;
+  border-radius: 14px;
+  width: 360px;
+  max-width: 90vw;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.12);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+  font-family: inherit;
+  color: #222;
+  user-select: text;
+}
+
+.modal-content h3 {
+  margin: 0 0 10px;
+  font-weight: 700;
+  font-size: 1.3rem;
+  color: #00796B;
+}
+
+.modal-content label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #555;
+}
+
+.modal-content input[type="text"] {
+  padding: 10px 14px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.modal-content input[type="text"]:focus {
+  border-color: #00796B;
+  outline: none;
+  box-shadow: 0 0 10px #00796B88;
+}
+
+#ariiList {
+  max-height: 210px;
+  overflow-y: auto;
+  border: 1.5px solid #ddd;
+  padding: 10px 14px;
+  border-radius: 8px;
+  background: #fafafa;
+  box-shadow: inset 0 1px 5px #eee;
+  font-weight: 600;
+  font-size: 0.95rem;
+}
+
+#ariiList .aria-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 6px 0;
+  border-bottom: 1px solid #e2e2e2;
+}
+
+#ariiList .aria-item:last-child {
+  border-bottom: none;
+}
+
+#ariiList button {
+  background-color: #E53935;
+  border: none;
+  color: white;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 5px 12px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+#ariiList button:hover {
+  background-color: #B71C1C;
+}
+
+#ariiList button:active {
+  background-color: #7F0000;
+}
+
+.modal-buttons {
+  display: flex;
+  flex-direction: column; 
+  gap: 14px;
+  margin-top: 14px;
+  align-items: stretch; 
+}
+
+.modal-buttons button {
+  width: 100%; 
+  padding: 12px 0;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  user-select: none;
+  transition: background-color 0.3s ease;
+  background-color: #00796B;
+  color: white;
+}
+
+.modal-buttons button:hover {
+  background-color: #004D40;
+}
+
+.modal-buttons button:active {
+  background-color: #00332b;
+}
+
+.modal-buttons > div {
+  display: flex;
+  gap: 14px;
+}
+
+#deleteRect {
+  background-color: #E53935;
+  color: white;
+  border: none;
+  padding: 12px 18px;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  user-select: none;
+  flex-shrink: 0;
+}
+
+#deleteRect:hover {
+  background-color: #B71C1C;
+}
+
+#deleteRect:active {
+  background-color: #7F0000;
+}
+
+#searchAria {
+  padding: 10px 14px;
+  font-size: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1.8px solid #ccc;
+  border-radius: 8px;
+  margin-bottom: 10px;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#searchAria:focus {
+  border-color: #00796B;
+  outline: none;
+  box-shadow: 0 0 10px #00796B88;
+}
+
+#ariiList::-webkit-scrollbar {
+  width: 8px;
+}
+#ariiList::-webkit-scrollbar-track {
+  background: #f0f0f0;
+  border-radius: 6px;
+}
+#ariiList::-webkit-scrollbar-thumb {
+  background: #b0b0b0;
+  border-radius: 6px;
+}
+#ariiList::-webkit-scrollbar-thumb:hover {
+  background: #909090;
+}
+
+/* Responsive rules */
+@media (max-width: 840px) {
+  #canvas {
+    width: 100%;
+    height: auto;
+    aspect-ratio: 4 / 3; /* pastreaza proportia */
+  }
+
+  .toolbar {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .button,
+  .upload-button {
+    width: 100%;
+    padding: 14px;
+    font-size: 1.1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+  }
+
+  .modal-content {
+    width: 90vw;
+    padding: 20px 16px;
+    gap: 14px;
+  }
+
+  .modal-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .modal-content input[type="text"] {
+    font-size: 0.9rem;
+    padding: 8px 12px;
+  }
+
+  #ariiList {
+    max-height: 160px;
+    font-size: 0.9rem;
+  }
+
+  .modal-buttons button {
+    font-size: 0.95rem;
+    padding: 10px 0;
+  }
+
+  #deleteRect {
+    font-size: 0.95rem;
+    padding: 10px 12px;
+  }
+}

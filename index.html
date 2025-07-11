@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>HARTA ARII PE INITAL</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h1>🗺️ Vizualizare Harta Depozit</h1>
+    
+    <div class="toolbar">
+      <button class="button" onclick="exportaHarta()">⬇️ Exporta harta</button>
+      <label class="upload-button">
+        📂 Importa harta
+        <input type="file" id="importFile" accept=".json">
+      </label>
+      <label class="upload-button">
+        📄 Incarca fisier scanare
+        <input type="file" id="scanFile" accept=".txt">
+      </label>
+    </div>
+
+    <div id="canvas"></div>
+  </div>
+
+<div id="editModal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <h3>Editează amplasament</h3>
+    <label>Cod amplasament:</label>
+    <input type="text" id="modalCode" />
+
+    <input type="text" id="ariiSearch" placeholder="Caută arie..." style="width: 100%; margin-bottom: 8px; padding: 6px;" />
+
+    <label>Arii:</label>
+    <div id="ariiList" style="max-height: 200px; overflow-y: auto; border: 1px solid #ccc; padding: 5px;"></div>
+
+    <div style="margin-top: 8px;">
+      <input type="text" id="newAriaInput" placeholder="Adaugă o arie nouă" style="width: calc(100% - 100px); padding: 6px;" />
+      <button id="addAriaBtn" style="width: 80px; padding: 6px;">Adaugă</button>
+    </div>
+
+   <div class="modal-buttons" >
+  <button id="deleteRect" style="background-color: #E53935; color: white;">Șterge amplasament</button>
+  <div>
+    <button id="modalSave">Salvează</button>
+    <button id="modalCancel">Anulează</button>
+  </div>
+</div>
+    </div>
+  </div>
+</div>
+
+
+
+
+  <script src="script.js"></script>
+</body>
+</html>
